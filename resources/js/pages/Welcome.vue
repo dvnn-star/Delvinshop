@@ -3,6 +3,7 @@ import { dashboard, login, register, gproducts } from '@/routes';
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import type { AppPageProps } from '@/types';
 
+
 const page = usePage<AppPageProps>();
 </script>
 
@@ -17,9 +18,11 @@ const page = usePage<AppPageProps>();
   >
     <!-- Welcome di kiri -->
     <div>
-      <p class="text-2xl font-bold text-[#1b1b18] dark:text-white">
-        Delvin Shop
-      </p>
+      <a href="/">
+        <p class="text-2xl font-bold text-[#1b1b18] dark:text-white">
+          e-commerce
+        </p>
+      </a>
     </div>
 
     <!-- Navbar di kanan -->
@@ -34,7 +37,6 @@ const page = usePage<AppPageProps>();
         >
           Dashboard
         </Link>
-
         <template v-else>
           <Link
             :href="gproducts()"
@@ -69,9 +71,10 @@ const page = usePage<AppPageProps>();
  
 
 <section>
-    <div class="flex ml-10 mt-30 ">
+    <div class="flex ml-10 mt-30 text-center">
         <div class="text-center font-bold text-2xl">
-            <p>Hallo welcome to Delvin Shop</p>
+            <h1>Welcome to Delvin Shop</h1>
+            <p class="mt-4 text-lg font-normal">Your one-stop shop for all your needs!</p>
         </div>
     </div>
 </section>
