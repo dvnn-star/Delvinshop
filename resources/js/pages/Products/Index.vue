@@ -144,7 +144,7 @@ watch(debouceQuery, (value) => {
                         {{ item.nama }} - Rp{{ item.price }}
                     </li>
                 </ul>
-            </div>
+            </div>  
             <Table>
 
                 <TableCaption> Product Yang Tersedia</TableCaption>
