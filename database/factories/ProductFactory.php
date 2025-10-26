@@ -18,6 +18,7 @@ class ProductFactory extends Factory
     {
         return [
             'nama' => fake()->name(),
+            'image' => 'https://picsum.photos/seed/' . fake()->uuid() . '/640/480',
             'price' => fake()->randomNumber(4,true),
             'description' => fake()->text(),
             'updated_at' => fake()->date(22,5,4,'now'),

@@ -38,6 +38,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 interface Product {
     id: number,
+    image:string,
     nama: string,
     price: number,
     description: string,
@@ -87,6 +88,7 @@ const Deleteitem = (productid) => {
 
 
 
+
 const searchQuery = ref('');
 const debouceQuery = useDebounce(searchQuery, 500);
 
@@ -94,7 +96,7 @@ watch(debouceQuery, (value) => {
     router.get(route('search.query', { q: value }), {}, { preserveState: true })
 })
 
-
+ 
 
 </script>
 
@@ -155,6 +157,7 @@ watch(debouceQuery, (value) => {
                 <TableHeader>
                     <TableRow>
                         <TableHead class="w-[100px]">Id</TableHead>
+                        <TableHead class="w-[100px]">Image</TableHead>
                         <TableHead class="w-[100px]">Nama</TableHead>
                         <TableHead class="w-[100px]">Price</TableHead>
                         <TableHead class="w-[100px]">Description</TableHead>
@@ -165,6 +168,7 @@ watch(debouceQuery, (value) => {
 
                     <TableRow v-for="Product in props.products.data" :key="Product.id">
                         <TableCell>{{ Product.id }}</TableCell>
+                        <TableCell><img :src="Product.image" alt=""></TableCell>
                         <TableCell class="font-medium">{{ Product.nama }}</TableCell>
                         <TableCell>{{ Product.price }}</TableCell>
                         <TableCell>{{ Product.description }}</TableCell>
@@ -182,7 +186,7 @@ watch(debouceQuery, (value) => {
                 </TableBody>
 
             </Table>
-            <Pagination>
+            <Pagination :items-per-page="10">
 
                 <PaginationItem v-for="(links, i) in props.products.links.pages" :key="i"
                     class="justify-content-center mx-4 ">

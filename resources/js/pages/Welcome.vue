@@ -20,7 +20,7 @@ const page = usePage<AppPageProps>();
     <div>
       <a href="/">
         <p class="text-2xl font-bold text-[#1b1b18] dark:text-white">
-          e-commerce
+          Delvin's Shop
         </p>
       </a>
     </div>
@@ -77,5 +77,13 @@ const page = usePage<AppPageProps>();
             <p class="mt-4 text-lg font-normal">Your one-stop shop for all your needs!</p>
         </div>
     </div>
+</section>
+
+
+
+<section>
+  <div>
+    
+  </div>
 </section>
 </template>
