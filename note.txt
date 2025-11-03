@@ -1,0 +1,2 @@
+git rm --cached <namafile>
+syntax ini untuk hapus tracking git
