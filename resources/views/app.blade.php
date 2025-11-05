@@ -12,7 +12,14 @@
             html {
                 background-color: white;
             }
-
+                    .error-container {
+            text-align: center;
+            padding: 40px;
+        }
+        .error-code {
+            font-size: 72px;
+            color: #e74c3c;
+        }
         </style>
         @routes
         @inertiaHead

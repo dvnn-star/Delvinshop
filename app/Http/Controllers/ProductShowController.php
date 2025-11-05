@@ -29,7 +29,7 @@ class ProductShowController extends Controller
                 'pages' => $datas->linkCollection()->toArray(),
             ]
             ],
-            'ratings' => Ratings::all(),
+            'ratings' => Ratings::orderBy('id','desc')->limit(11)->get(),
         ]);
     
     }
