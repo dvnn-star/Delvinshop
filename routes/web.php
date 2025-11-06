@@ -10,9 +10,9 @@ Route::get('/',[ProductShowController::class,'index'])->name('home');
 
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified','role:staff'])->name('dashboard');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified','role:staff'])->group(function () {
 
     Route::get('Products', [ProductController::class, 'index'])->name('products');
     Route::get('Products/create', [ProductController::class, 'create'])->name('products.create');

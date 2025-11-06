@@ -4,7 +4,8 @@ import { Icon } from "@iconify/vue";
 </script>
 
 <template>
-    <footer class="w-full border h-40  bg-black mt-24">
+    <footer class="w-full border flex  bg-black mt-24">
+
         <div class="w-full">
             <div class="gap-4 ml-2">
                 <div class="flex  gap-3 ">
@@ -31,10 +32,9 @@ import { Icon } from "@iconify/vue";
                     </a>
                     <p class="text-xl pt-1 text-white capitalize">windah basudara</p>
                 </div>
+         
             </div>
-            <div>
-                <p class="text-black">&copy</p>
-            </div>
+
         </div>
     </footer>
 </template>

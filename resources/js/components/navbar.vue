@@ -5,11 +5,16 @@ import { Head, Link, usePage } from '@inertiajs/vue3';
 import type { AppPageProps } from '@/types';
 import Input from './ui/input/Input.vue';
 const page = usePage<AppPageProps>();
+
+
+
+
+
 </script>
 <template>
   <div class="  flex justify-center border-b ">
     <div
-      class="flex items-center justify-between w-full max-w-6xl px-6 py-4 lg:px-8 bg-[#fffffe] text-[#1b1b18] mb-2"
+      class="flex items-center justify-between w-full max-w-6xl px-6 py-4 lg:px-8 bg-[#fffffe] text-[#1b1b18] mb-2  "
     >
       <div class="w-56">
         <a href="/">
@@ -30,7 +35,7 @@ const page = usePage<AppPageProps>();
       <header class="w-56 flex justify-end text-sm">
         <nav class="flex items-center gap-3">
           <Link
-            v-if="page.props.auth.user"
+            v-if="page.props.auth.staff"
             :href="dashboard()"
             class="inline-block rounded-md border px-5 py-1.5 text-sm leading-normal 
                    border-[#19140035] text-white bg-slate-800 hover:bg-slate-700 transition"
@@ -40,6 +45,7 @@ const page = usePage<AppPageProps>();
 
           <template v-else>
             <Link
+              
               :href="login()"
               class="inline-block rounded-md px-5 py-1.5 text-sm leading-normal 
                      text-white bg-slate-800 hover:bg-slate-700 transition"

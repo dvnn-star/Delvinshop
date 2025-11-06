@@ -32,6 +32,7 @@ class AuthenticatedSessionController extends Controller
     {
         $user = $request->validateCredentials();
 
+        
         if (Features::enabled(Features::twoFactorAuthentication()) && $user->hasEnabledTwoFactorAuthentication()) {
             $request->session()->put([
                 'login.id' => $user->getKey(),
@@ -44,8 +45,10 @@ class AuthenticatedSessionController extends Controller
         Auth::login($user, $request->boolean('remember'));
 
         $request->session()->regenerate();
-
-        return redirect()->intended(route('dashboard', absolute: false));
+        if ($user->role === 'staff'){
+            return redirect()->intended(route('dashboard', absolute: false));
+        }
+        return redirect()->intended(route('home', absolute: false));
     }
 
     /**
