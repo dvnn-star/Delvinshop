@@ -50,6 +50,6 @@ defineProps({
   display: flex;
   width: max-content;
 }
-
+  
 
 </style>

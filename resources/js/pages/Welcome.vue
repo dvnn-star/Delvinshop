@@ -5,6 +5,7 @@ import type { AppPageProps } from '@/types';
 import RatingSection from '@/components/RatingSection.vue';
 import Footer from '@/components/footer.vue';
 import Navbar from '@/components/navbar.vue';
+import Forms from '@/components/forms.vue';
 
 
 interface Product {
@@ -43,8 +44,9 @@ interface Ratings {
 
 interface Props {
   products: PaginatedProducts;
-  results: Product[];
+
   ratings: Ratings[];
+  
 }
 
 const page = usePage<AppPageProps>();
@@ -122,7 +124,7 @@ body {
 
   <section class="py-8">
     <div class="flex justify-center relative gap-6 flex-wrap max-w-6xl mx-auto">
-      <p class='text-black absolute   left-20 -top-10 text-2xl  font-bold'>Best Sell:</p>
+      <p class='text-black absolute   left-20 -top-10 text-2xl  font-bold'>Product:</p>
       <div class="card bg-base-100 w-80 shadow-sm" v-for="product in props.products.data" :key="product.id">
         <figure>
           <img :src="product.image" alt="Product image" class="object-cover h-48 w-full" />
@@ -134,11 +136,12 @@ body {
           <div class="card-actions justify-end">
             <button class="btn btn-primary">Buy Now</button>
           </div>
-        </div>
+        </div>  
       </div>
     </div>
   </section>
   <RatingSection :ratings="props.ratings" />
+  <Forms/>
   <Footer />
 
 </template>
