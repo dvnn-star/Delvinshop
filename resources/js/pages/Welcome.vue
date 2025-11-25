@@ -6,7 +6,7 @@ import RatingSection from '@/components/RatingSection.vue';
 import Footer from '@/components/footer.vue';
 import Navbar from '@/components/navbar.vue';
 import Forms from '@/components/forms.vue';
-
+import { store } from "./shoopingcart/store"
 
 interface Product {
   id: number;
@@ -46,13 +46,13 @@ interface Props {
   products: PaginatedProducts;
 
   ratings: Ratings[];
-  
-}
 
+}
+let jumlahproduk = 1
 const page = usePage<AppPageProps>();
 const props = defineProps<Props>();
 
-
+console.log(store.isiProduk)
 console.log(props.ratings)
 </script>
 
@@ -133,15 +133,15 @@ body {
           <h2 class="card-title">{{ product.nama }}</h2>
           <p>{{ product.description }}</p>
           <p class="text-xl absolute bottom-7 left-7 font-bold underline">{{ product.price }}$</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+          <div class="card-actions justify-end mt-3">
+            <button class="btn btn-primary" @click="store.increment([product.image,product.nama, product.price,jumlahproduk])">Buy Now</button>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   </section>
   <RatingSection :ratings="props.ratings" />
-  <Forms/>
+  <Forms />
   <Footer />
 
 </template>
