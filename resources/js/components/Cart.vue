@@ -9,7 +9,14 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { ShoppingCart } from 'lucide-vue-next';
 import { store } from '../pages/shoopingcart/store'
+import { computed } from 'vue';
+const totalHarga = computed(() => {
+    return store.isiProduk.reduce((acc,produk)=> {
+        return acc + produk[2] * produk[3]
+    },0)
+});
 
+console.log(store.isiProduk)
 </script>
 <template>
     <DropdownMenu>
@@ -17,7 +24,7 @@ import { store } from '../pages/shoopingcart/store'
             <ShoppingCart />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-            <div v-for="produk in store.isiProduk" class="flex justify-between px-4 py-2">
+            <div v-for="produk in store.isiProduk" class=" justify-between px-4 py-2">
                 <DropdownMenuItem>
                     <div class="flex gap-3 relative w-50">
                         <img :src="produk[0]" alt="" width="80px" height="80px">
@@ -35,8 +42,15 @@ import { store } from '../pages/shoopingcart/store'
                     </div>
 
                 </DropdownMenuItem>
+                
             </div>
-
+            <DropdownMenuItem v-if="store.isiProduk.length > 0">
+                <div class="justify-around w-full flex">
+                    <button class="bg-blue-600 p-2">Buy Now</button>
+                    <p class="text-base">Total: {{ totalHarga }}</p>
+                </div>
+    
+            </DropdownMenuItem>
         </DropdownMenuContent>
     </DropdownMenu>
 </template>
