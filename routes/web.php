@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductShowController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,8 @@ Route::middleware(['auth', 'verified', 'role:staff'])->group(function () {
     Route::post('Products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('Products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('Products/{q}', [ProductController::class, 'search'])->name('search.query');
+    Route::post('Payment',[PaymentController::class,'index'])->name('payment');
+    Route::get('Payment',[PaymentController::class,'store'])->name('payment.store');
 });
 
 require __DIR__ . '/settings.php';

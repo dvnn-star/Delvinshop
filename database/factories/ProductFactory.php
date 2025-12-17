@@ -19,11 +19,11 @@ class ProductFactory extends Factory
         return [
             'nama' => fake()->word(5),
             'image' => 'https://picsum.photos/seed/' . fake()->uuid() . '/640/480',
-            'price' => fake()->randomNumber(4,true),
+            'price' => fake()->randomNumber(3, true),
             'description' => fake()->text(),
-            'type' => fake()->randomElement(['baju','celana','gaun','kemeja']),
-            'updated_at' => fake()->date(22,5,4,'now'),
-            'created_at' => fake()->date(20,5,4,'now'),
+            'type' => fake()->randomElement(['baju', 'celana', 'gaun', 'kemeja']),
+            'updated_at' => now(), // or Carbon::now()
+            'created_at' => now(),
         ];
     }
 }

@@ -54,7 +54,7 @@ class ProductShowController extends Controller
         $query = $request->q;
         $results = [];
         if ($query){
-            $results = Product::where("nama","LIKE","%{$query}%")->get();
+            $results = Product::where("nama","LIKE","%{$query}%")->orWhere("type","LIKE","%{$query}%")->get();
         }
        
         return inertia::render('Welcome',[

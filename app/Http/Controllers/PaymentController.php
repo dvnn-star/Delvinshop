@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class UserSettingController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $user = auth()->user();
-        return Inertia::render('UserSettings/profile', $user);
+        return Inertia::render('payment/index');
     }
 
     /**
@@ -52,17 +50,9 @@ class UserSettingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, string $id)
     {
-        $data = $request->validate([
-            'name' => 'required|max:20',
-            'email' =>  'required|email'
-        ]); 
-        
-
-
-        $user->update($data);
-        return back()->with('success','profile updated');
+        //
     }
 
     /**
