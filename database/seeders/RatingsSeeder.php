@@ -17,43 +17,43 @@ class RatingsSeeder extends Seeder
             'user' => 'delvin',
             'Ratings' => 'keren banget bang',
             'Bintang' => 3,
-            'updated_at' => fake()->date(22,5,4,'now'),
-            'created_at' => fake()->date(20,5,4,'now'),
+            'created_at' => fake()->dateTimeThisYear(), // Faker object
+            'updated_at' => fake()->dateTimeThisYear(),
         ]);
-          Ratings::insert([
+        Ratings::insert([
             'user' => 'asep',
             'Ratings' => 'kacau parah bang',
             'Bintang' => 5,
-            'updated_at' => fake()->date(22,5,4,'now'),
-            'created_at' => fake()->date(20,5,4,'now'),
+    'created_at' => fake()->dateTimeThisYear(), // Faker object
+    'updated_at' => fake()->dateTimeThisYear(),
         ]);
-                Ratings::insert([
+        Ratings::insert([
             'user' => 'delvin',
             'Ratings' => 'keren banget bang',
             'Bintang' => 3,
-            'updated_at' => fake()->date(22,5,4,'now'),
-            'created_at' => fake()->date(20,5,4,'now'),
+    'created_at' => fake()->dateTimeThisYear(), // Faker object
+    'updated_at' => fake()->dateTimeThisYear(),
         ]);
-          Ratings::insert([
+        Ratings::insert([
             'user' => 'asep',
             'Ratings' => 'kacau parah bang',
             'Bintang' => 5,
-            'updated_at' => fake()->date(22,5,4,'now'),
-            'created_at' => fake()->date(20,5,4,'now'),
+    'created_at' => fake()->dateTimeThisYear(), // Faker object
+    'updated_at' => fake()->dateTimeThisYear(),
         ]);
-                Ratings::insert([
+        Ratings::insert([
             'user' => 'delvin',
             'Ratings' => 'keren banget bang',
             'Bintang' => 3,
-            'updated_at' => fake()->date(22,5,4,'now'),
-            'created_at' => fake()->date(20,5,4,'now'),
+            'created_at' => fake()->dateTimeThisYear(), // Faker object
+            'updated_at' => fake()->dateTimeThisYear(),
         ]);
-          Ratings::insert([
+        Ratings::insert([
             'user' => 'asep',
             'Ratings' => 'kacau parah bang',
             'Bintang' => 5,
-            'updated_at' => fake()->date(22,5,4,'now'),
-            'created_at' => fake()->date(20,5,4,'now'),
+            'created_at' => fake()->dateTimeThisYear(), // Faker object
+            'updated_at' => fake()->dateTimeThisYear(),
         ]);
     }
 }

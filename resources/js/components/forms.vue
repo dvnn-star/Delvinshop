@@ -16,6 +16,7 @@ const formss  = useForm({
 // reset form dan handle submitnya
 const Handlesubmit = () => {
     formss.post(route('forms.store'),{
+        preserveScroll: true,
         onError:(error) => console.error(error),
         onSuccess: () => {
             formss.reset()

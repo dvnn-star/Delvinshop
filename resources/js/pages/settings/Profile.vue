@@ -42,12 +42,13 @@ const user = page.props.auth.user;
                     title="Profile information"
                     description="Update your name and email address"
                 />
-
+                
                 <Form
                     v-bind="ProfileController.update.form()"
                     class="space-y-6"
                     v-slot="{ errors, processing, recentlySuccessful }"
                 >
+
                     <div class="grid gap-2">
                         <Label for="name">Name</Label>
                         <Input
