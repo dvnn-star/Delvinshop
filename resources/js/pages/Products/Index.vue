@@ -71,7 +71,7 @@ const props = defineProps<Props>();
 const page = usePage()
 
 
-const Deleteitem = (productid) => {
+const Deleteitem = (productid:any) => {
     Swal.fire({
         title: 'Are you sure?',
         text: 'you wont back to delete  this product again',
@@ -187,7 +187,6 @@ watch(debouceQuery, (value) => {
 
             </Table>
             <Pagination :items-per-page="10">
-
                 <PaginationItem v-for="(links, i) in props.products.links.pages" :key="i"
                     class="justify-content-center mx-4 ">
                     <Button :disabled="!links.url" :variant="links.active ? 'default' : 'outline'"

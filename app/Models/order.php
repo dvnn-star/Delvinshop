@@ -13,4 +13,12 @@ class order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function order_details(){
+        return $this->hasMany(order_details::class);
+    }
+    
+    public function payments(){
+        return $this->hasMany(payments::class);
+    }
 }
