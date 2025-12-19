@@ -9,16 +9,24 @@ class order extends Model
 {
     /** @use HasFactory<\Database\Factories\OrderFactory> */
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'invoice_number',
+        'gross_amount',
+        'status',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function order_details(){
+    public function order_details()
+    {
         return $this->hasMany(order_details::class);
     }
-    
-    public function payments(){
+
+    public function payments()
+    {
         return $this->hasMany(payments::class);
     }
 }
