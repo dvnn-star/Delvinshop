@@ -47,11 +47,9 @@
 
   interface Props {
     products: PaginatedProducts;
-
     ratings: Ratings[];
 
   }
-
 
   let jumlahproduk = 1
   const page = usePage<AppPageProps>();
@@ -63,7 +61,9 @@
   function BuyNow(image: any, nama: any, price: any) {
 
     store.increment({ image, nama, price, jumlahproduk, qty: 1 });
-    Toast.success('Data Berhasil ditambahkan')
+    Toast.success("data berhasil dimasukkan",{
+      timeout : 1000
+    })
   };
 
   function HandlePagination(Links: string) {

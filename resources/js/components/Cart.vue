@@ -12,6 +12,7 @@ import { store } from '../pages/shoopingcart/store'
 import { computed, ref } from 'vue';
 import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/vue3';
+import { useToast } from 'vue-toastification';
 
 
 const totalHarga = computed(() => {
@@ -34,6 +35,7 @@ const payload = {
 
 
 console.log(store.isiProduk)
+
 </script>
 <template>
     <DropdownMenu>
@@ -51,7 +53,7 @@ console.log(store.isiProduk)
                     <div class="gap-5 align-bottom">
                         <span>{{ produk.qty }}</span>
                         <button class="text-2xl mx-10" @click.stop="produk.qty++">+</button>
-                        <button class="text-2xl mr-8" @click.stop="produk.qty = Math.max(1, produk.qty - 1)">-</button>
+                        <button class="text-2xl mr-8" @click.stop="store.decrement(produk)" >-</button>
 
                     </div>
                     <div class="ml-10">
