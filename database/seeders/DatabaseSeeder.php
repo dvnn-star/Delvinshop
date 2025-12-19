@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
             'password' => 'delvinpro'
 
-        ]);
+        ]); 
         $this->call(ProductSeeder::class);
         $this->call(RatingsSeeder::class);
     }

@@ -9,7 +9,19 @@ class payments extends Model
 {
     /** @use HasFactory<\Database\Factories\PaymentsFactory> */
     use HasFactory;
-    public function order(){
+
+    protected $fillable = [
+        'order_id',
+        'amount',
+        'status',
+        'snap_token',
+        'payment_date',
+    ];
+    protected $casts = [
+        'payment_date' => 'datetime',
+    ];
+    public function order()
+    {
         return $this->belongsTo(order::class);
     }
 }
