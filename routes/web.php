@@ -17,7 +17,6 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified', 'role:staff'])->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'role:staff'])->group(function () {
-
     Route::get('Products', [ProductController::class, 'index'])->name('products');
     Route::get('Products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('Products', [ProductController::class, 'store'])->name('products.store');
@@ -32,3 +31,4 @@ Route::middleware(['auth', 'verified', 'role:staff'])->group(function () {
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/userSettings.php';
+require __DIR__ . '/order.php';
