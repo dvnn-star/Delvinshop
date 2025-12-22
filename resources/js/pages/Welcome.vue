@@ -11,6 +11,7 @@
   import Pagination from '@/components/ui/pagination/Pagination.vue';
   import PaginationItem from '@/components/ui/pagination/PaginationItem.vue';
   import Button from '@/components/ui/button/Button.vue';
+import { route } from 'ziggy-js';
 
   interface Product {
     id: number;
@@ -105,7 +106,7 @@
     </section>
     <section>
       <div class="w-full  mx-auto flex justify-center  h-[200px]">
-        <div class="relative mx-4 mt-4 w-[92px] h-[120px]">
+        <div class="relative mx-4 mt-4 w-[92px] h-[120px] cursor-pointer" @click="router.visit(route('filter.baju'))">
           <div class="border rounded-full mx-auto w-[92px] h-[92px]
               bg-[url('img/baju.jpeg')] bg-contain bg-center bg-no-repeat "></div>
           <p class="font-bold text-xl text-black absolute bottom-0 right-7">
