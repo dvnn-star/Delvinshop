@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { ShoppingCart } from 'lucide-vue-next';
 import { store } from '../pages/shoopingcart/store'
-import { computed, ref } from 'vue';
+import { computed, ref } from 'vue';                    
 import { route } from 'ziggy-js';
 import { useForm } from '@inertiajs/vue3';
 import { useToast } from 'vue-toastification';
@@ -26,13 +26,11 @@ const form = useForm({
     total: totalHarga.value,
 })
 function checkout() {
-    form.post(route('order'))
+    form.items = store.isiProduk
+    form.total = totalHarga.value
+    form.post(route('order.store'))
 }
-const payload = {
-    items: store.isiProduk,
-    total: totalHarga.value,
-}
-
+console.log(form.items)
 
 console.log(store.isiProduk)
 

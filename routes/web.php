@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Filter\FilterController;
+use App\Http\Controllers\payment\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductShowController;
@@ -10,6 +11,7 @@ use Inertia\Inertia;
 Route::get('/', [ProductShowController::class, 'index'])->name('home');
 Route::post('/', [ProductShowController::class, 'store'])->name('forms.store');
 Route::get('/q/{q}', [ProductShowController::class, 'search'])->name('search');
+Route::get('/f/baju',[FilterController::class,'Baju'])->name('filter.baju');
 
 
 Route::get('dashboard', function () {
@@ -24,8 +26,6 @@ Route::middleware(['auth', 'verified', 'role:staff'])->group(function () {
     Route::post('Products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('Products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::get('Products/{q}', [ProductController::class, 'search'])->name('search.query');
-    Route::post('order',[OrderController::class,'store'])->name('order.store');
-    Route::get('order/{order:invoice_number}',[OrderController::class,'index'])->name('order');
 });
 
 require __DIR__ . '/settings.php';

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class payments extends Model
 {
@@ -20,7 +21,7 @@ class payments extends Model
     protected $casts = [
         'payment_date' => 'datetime',
     ];
-    public function order()
+    public function order() :BelongsTo
     {
         return $this->belongsTo(order::class);
     }

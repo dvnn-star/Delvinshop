@@ -11,7 +11,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(  )
+    public function index()
     {   
         $datas = Product::orderBy('id','asc')->paginate(10);
         return Inertia::render('Products/Index',['products' => [
