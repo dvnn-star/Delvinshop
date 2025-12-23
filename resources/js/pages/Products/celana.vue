@@ -39,7 +39,7 @@ const BuyNow = (image: string, nama: string, price: string) => {
     <div class="max-w-7xl mx-auto">
       <div class="mb-10 flex items-center justify-between border-b border-gray-200 pb-5">
         <div>
-          <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Koleksi Baju</h1>
+          <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Koleksi Celana</h1>
           <p class="mt-2 text-sm text-gray-500">Menampilkan {{ props.datas.length }} produk terbaik untuk Anda.</p>
         </div>
       </div>

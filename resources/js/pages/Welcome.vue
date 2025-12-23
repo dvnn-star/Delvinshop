@@ -11,7 +11,7 @@
   import Pagination from '@/components/ui/pagination/Pagination.vue';
   import PaginationItem from '@/components/ui/pagination/PaginationItem.vue';
   import Button from '@/components/ui/button/Button.vue';
-import { route } from 'ziggy-js';
+  import { route } from 'ziggy-js';
 
   interface Product {
     id: number;
@@ -62,8 +62,8 @@ import { route } from 'ziggy-js';
   function BuyNow(image: any, nama: any, price: any) {
 
     store.increment({ image, nama, price, jumlahproduk, qty: 1 });
-    Toast.success("data berhasil dimasukkan",{
-      timeout : 1000
+    Toast.success("data berhasil dimasukkan", {
+      timeout: 1000
     })
   };
 
@@ -116,16 +116,17 @@ import { route } from 'ziggy-js';
 
         <!-- Item 2 -->
         <div class="relative mx-4 mt-4 w-[92px] h-[120px]">
-          <div class="border rounded-full mx-auto w-[92px] h-[92px]
-              bg-[url('img/celana.jpeg')] bg-contain bg-center bg-no-repeat"></div>
-          <p class="font-bold text-xl text-black absolute bottom-0 right-3">
+          <div @click="router.visit(route('filter.celana'))" 
+          class="border rounded-full mx-auto w-[92px] h-[92px]
+              bg-[url('img/celana.jpeg')] bg-contain bg-center cursor-pointer bg-no-repeat"></div>
+          <p class="font-bold text-xl text-black absolute  bottom-0 right-3">
             Celana
           </p>
         </div>
 
         <!-- Item 3 -->
         <div class="relative mx-4 mt-4 w-[92px] h-[120px]">
-          <div class="border rounded-full mx-auto w-[92px] h-[92px]
+          <div @click="router.visit(route('filter.gaun'))" class="border rounded-full mx-auto w-[92px] h-[92px] cursor-pointer
               bg-[url('img/gaun.jpeg')] bg-contain bg-center bg-no-repeat"></div>
           <p class="font-bold text-xl text-black absolute bottom-0 left-5">
             Gaun
@@ -134,7 +135,7 @@ import { route } from 'ziggy-js';
 
         <!-- Item 4 -->
         <div class="relative mx-4 mt-4 w-[92px] h-[120px]">
-          <div class="border rounded-full mx-auto w-[92px] h-[92px]
+          <div @click="router.visit(route('filter.kemeja'))" class="border rounded-full mx-auto w-[92px] cursor-pointer h-[92px]
               bg-[url('img/kemeja.jpeg')] bg-contain bg-center bg-no-repeat"></div>
           <p class="font-bold text-xl text-black absolute bottom-0 left-3">
             Kemeja
