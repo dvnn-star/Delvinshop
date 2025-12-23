@@ -12,6 +12,10 @@ Route::get('/', [ProductShowController::class, 'index'])->name('home');
 Route::post('/', [ProductShowController::class, 'store'])->name('forms.store');
 Route::get('/q/{q}', [ProductShowController::class, 'search'])->name('search');
 Route::get('/f/baju',[FilterController::class,'Baju'])->name('filter.baju');
+Route::get('/f/celana',[FilterController::class,'Celana'])->name('filter.celana');
+Route::get('/f/gaun',[FilterController::class,'Gaun'])->name('filter.gaun');
+Route::get('/f/kemeja',[FilterController::class,'Kemeja'])->name('filter.kemeja');
+
 
 
 Route::get('dashboard', function () {

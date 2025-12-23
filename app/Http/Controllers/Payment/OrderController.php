@@ -15,6 +15,9 @@ class OrderController extends Controller
     }
     public function store(Request  $request){
         dd($request);
+        Order::create([
+
+        ]);
 
         return Inertia::render('payment/index');
     }
