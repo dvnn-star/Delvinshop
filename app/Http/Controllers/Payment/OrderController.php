@@ -11,8 +11,8 @@ use Inertia\Inertia;
 
 class OrderController extends Controller
 {
-    public function index(){
-        return Inertia::render('payment/index');
+    public function index(order $order){
+        return Inertia::render('payment/index',['Order' => $order]);
 
     }
     public function store(Request  $request){

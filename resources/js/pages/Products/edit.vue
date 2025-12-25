@@ -19,7 +19,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const Handlesubmit = () => {
     forms.post(route('products.update',{product:props.product}))
-
 }
 
 
