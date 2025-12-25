@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class order_details extends Model
 {
@@ -16,11 +17,12 @@ class order_details extends Model
         'quantity',
         'price',
     ];
-    public function order():BelongsTo
+
+    public function order(): BelongsTo
     {
         return $this->belongsTo(order::class);
     }
-    public function Product():BelongsTo
+    public function Product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
