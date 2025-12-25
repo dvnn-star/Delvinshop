@@ -59,9 +59,9 @@
 
   // Alert Notification
   const Toast = useToast();
-  function BuyNow(image: any, nama: any, price: any) {
+  function BuyNow(image: any, nama: any, price: any,id:number) {
 
-    store.increment({ image, nama, price, jumlahproduk, qty: 1 });
+    store.increment({ image, nama, price, jumlahproduk, id,qty: 1 });
     Toast.success("data berhasil dimasukkan", {
       timeout: 1000
     })
@@ -157,7 +157,7 @@
             <p>{{ product.description }}</p>
             <p class="text-xl absolute bottom-7 left-7 font-bold underline">{{ product.price }}$</p>
             <div class="card-actions justify-end mt-3">
-              <button class="btn btn-primary" @click="BuyNow(product.image, product.nama, product.price)">Buy
+              <button class="btn btn-primary" @click="BuyNow(product.image, product.nama, product.price,product.id)">Buy
                 Now</button>
             </div>
           </div>
