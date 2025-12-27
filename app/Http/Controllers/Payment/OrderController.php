@@ -12,6 +12,7 @@ use Inertia\Inertia;
 class OrderController extends Controller
 {
     public function index(order $order){
+        $order->load(['order_details.product','user']);
         return Inertia::render('payment/index',['Order' => $order]);
 
     }
