@@ -17,6 +17,7 @@ class payments extends Model
         'status',
         'snap_token',
         'payment_date',
+        
     ];
     protected $casts = [
         'payment_date' => 'datetime',
