@@ -86,18 +86,13 @@ const Paynow = () => {
                                 Ditagihkan Kepada
                             </h3>
                             <div class="text-gray-800 space-y-1">
-                                <p class="text-lg font-bold text-gray-900">{{ props.Order.user.nama }}</p>
+                                <p class="text-lg font-bold text-gray-900">{{ props.Order.user.name }}</p>
                                 <p class="text-sm">{{ props.Order.user.email }}</p>
                                 <p class="text-sm text-gray-500">{{ props.Order.user.phone ?? '-' }}</p>
                             </div>
                         </div>
 
-                        <div class="md:text-right">
-                            <h3 class="text-xs uppercase tracking-wider text-gray-400 font-bold mb-3">
-                                Metode Pembayaran
-                            </h3>
-                            <p class="text-gray-800 font-medium">Midtrans Gateway</p>
-                        </div>
+  
                     </div>
 
                     <div class="border rounded-lg border-gray-200 overflow-hidden">
