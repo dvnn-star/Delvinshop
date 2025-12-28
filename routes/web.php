@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified', 'role:staff'])->group(function () {
     Route::get('Products/{q}', [ProductController::class, 'search'])->name('search.query');
 });
 
+Route::post('/payment/callback',[PaymentController::class ,'HandleCallBack'])->name('payment.callback');
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/userSettings.php';
