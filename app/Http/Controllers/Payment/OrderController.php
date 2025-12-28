@@ -105,8 +105,16 @@ class OrderController extends Controller
                 $totalamount += $subtotal;
             };
             $order->update(['gross_amount' => $totalamount]);
-        });
+        }); 
+            $Orderid = order::where('user_id',auth()->id())->get();
+            $order = $Orderid->last();
+            $orders = $order->invoice_number; 
 
-        return Inertia::render('payment/index');
+        return redirect(route('order',$orders));
+    }
+    public function show($id){
+        settype($id,"integer");
+        $dataOrder = order::where('user_id',$id)->get();
+        return Inertia::render('payment/order',['Orders' => $dataOrder]);
     }
 }

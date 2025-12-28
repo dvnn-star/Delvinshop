@@ -9,7 +9,7 @@ import { logout } from '@/routes';
 import { edit } from '@/routes/profile';
 import type { User } from '@/types';
 import { router } from '@inertiajs/vue3';
-import { ArrowBigRightDash, LogOut, Settings } from 'lucide-vue-next';
+import { ArrowBigRightDash, LogOut, Settings,Package2 } from 'lucide-vue-next';
 import { useDebounce } from "@vueuse/core";
 import { watch, ref } from "vue";
 import { route } from "ziggy-js";
@@ -20,7 +20,6 @@ interface Props {
   Products: Product;
   Results: Product[];
 }
-
 
 
 interface Product {
@@ -45,7 +44,6 @@ watch(debouceQuery, (value) => {
   }
   router.get(route('search', { q: value }), {}, { preserveState: true })
 })
-
 </script>
 <template>
   <div class="  flex justify-center border-b ">
@@ -94,6 +92,12 @@ watch(debouceQuery, (value) => {
                   class="flex w-full border bg-transparent text-white">
                 <ArrowBigRightDash class="mr-2 h-4 w-4 text-white" />
                 Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link class="flex w-full border bg-transparent text-white" :href="route('order.view',page.props.auth.user.id)">
+                  <Package2 class="mr-2 h-4 w-4"/>
+                  Order
                 </Link>
               </li>
               <li>
