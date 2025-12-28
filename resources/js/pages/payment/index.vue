@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { route } from 'ziggy-js';
+import { router } from '@inertiajs/vue3';
+import { useToast } from 'vue-toastification';
 
 
 interface Order {
@@ -8,10 +12,43 @@ interface Order {
 }
 interface Props {
     Order: Order
+    snap_token: String
+    midtrans_client_key: any
 
 }
+const isSnapLoaded = ref(false);
 const props = defineProps<Props>();
-console.log(props)
+console.log(props.snap_token)
+const Toast = useToast();
+    
+onMounted(() => {
+    const script = document.createElement('script');
+    script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+    script.setAttribute('data-client-key', props.midtrans_client_key);
+    script.onload = () => {
+        isSnapLoaded.value = true
+    }
+    document.head.appendChild(script);
+});
+const Paynow = () => {
+    if (!isSnapLoaded.value) return;
+    (window as any).snap.pay(props.snap_token, {
+        onSuccess: function (result: any) {
+            Toast.success('Payment Berhasil',{
+                timeout:300
+            })
+            router.visit(route('home'))
+        },
+        // Optional
+        onPending: function (result : any) {
+        },
+        // Optional
+        onError: function (result:any) {
+
+        }
+    });
+};
+
 </script>
 
 <template>
@@ -31,8 +68,8 @@ console.log(props)
                                     day: '2-digit',
                                     month: 'long',
                                     year: 'numeric',
-                                hour: '2-digit',
-                                minute: '2-digit'
+                                    hour: '2-digit',
+                                    minute: '2-digit'
                                 }) }}
                             </span>
                         </p>
@@ -115,7 +152,7 @@ console.log(props)
                                 <span class="text-2xl font-bold text-indigo-600">Rp {{ Order.gross_amount }}</span>
                             </div>
 
-                            <button
+                            <button @click="Paynow"
                                 class="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5">
                                 Bayar Sekarang
                             </button>
@@ -125,6 +162,5 @@ console.log(props)
 
             </div>
         </div>
-
     </div>
 </template>
