@@ -34,7 +34,7 @@ class OrderController extends Controller
 
 
                 $transaction_details = array(
-                    'order_id' => $order->id,
+                    'order_id' => $order->invoice_number,
                     'gross_amount' => $order->gross_amount, // no decimal allowed for creditcard
                 );
                 $customer_details = array(
@@ -75,7 +75,10 @@ class OrderController extends Controller
                     }
 
         }
-        return Inertia::render('payment/index', ['Order' => $order,'snap_token' => $snap_token,'midtrans.client_key'=> config('midtrans.client_key')]);
+        return Inertia::render('payment/index', [
+            'Order' => $order,
+            'snap_token' => $snap_token,
+            'midtrans_client_key'=> config('midtrans.client_key')]);
     }
     public function store(Request  $request)
     {

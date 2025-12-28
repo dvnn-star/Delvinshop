@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('invoice_number')->unique();
             $table->integer('gross_amount');
             $table->string('status');
-            $table->timestamps();
+            $table->timestamps();   
         });
     }
 
