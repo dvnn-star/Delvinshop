@@ -18,9 +18,7 @@ interface Props {
 }
 const isSnapLoaded = ref(false);
 const props = defineProps<Props>();
-console.log(props.snap_token)
 const Toast = useToast();
-    
 onMounted(() => {
     const script = document.createElement('script');
     script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
