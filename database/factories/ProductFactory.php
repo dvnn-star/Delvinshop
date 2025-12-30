@@ -19,7 +19,7 @@ class ProductFactory extends Factory
         return [
             'nama' => fake()->word(5),
             'image' => 'https://picsum.photos/seed/' . fake()->uuid() . '/640/480',
-            'price' => fake()->randomNumber(3, true),
+            'price' => fake()->randomNumber(6, true),
             'description' => fake()->text(),
             'type' => fake()->randomElement(['baju', 'celana', 'gaun', 'kemeja']),
             'updated_at' => now(), // or Carbon::now()

@@ -75,6 +75,13 @@
     })
   }
 
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(price);
+};
 </script>
 
   <style>
@@ -155,7 +162,7 @@
           <div class="card-body">
             <h2 class="card-title">{{ product.nama }}</h2>
             <p>{{ product.description }}</p>
-            <p class="text-xl absolute bottom-7 left-7 font-bold underline">{{ product.price }}$</p>
+            <p class="text-xl absolute bottom-7 left-7 font-bold underline">{{ formatPrice(product.price) }}</p>
             <div class="card-actions justify-end mt-3">
               <button class="btn btn-primary" @click="BuyNow(product.image, product.nama, product.price,product.id)">Buy
                 Now</button>

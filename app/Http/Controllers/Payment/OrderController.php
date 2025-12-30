@@ -112,9 +112,20 @@ class OrderController extends Controller
 
         return redirect(route('order',$orders));
     }
+
+
+
     public function show($id){
         settype($id,"integer");
         $dataOrder = order::where('user_id',$id)->get();
+        if($id !== auth()->id()){
+            abort(403,'Anda gapunya akses ke akun ini');
+        }   
         return Inertia::render('payment/order',['Orders' => $dataOrder]);
+    }
+
+    public function dashboard(){
+        $data = order::with(['order_details','user','order_details.Product'])->get();
+        return Inertia::render('Dashboard',['data' => $data]);
     }
 }

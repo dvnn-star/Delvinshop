@@ -32,21 +32,27 @@ const Paynow = () => {
     if (!isSnapLoaded.value) return;
     (window as any).snap.pay(props.snap_token, {
         onSuccess: function (result: any) {
-            Toast.success('Payment Berhasil',{
-                timeout:300
+            Toast.success('Payment Berhasil', {
+                timeout: 300
             })
             router.visit(route('home'))
         },
         // Optional
-        onPending: function (result : any) {
+        onPending: function (result: any) {
         },
         // Optional
-        onError: function (result:any) {
+        onError: function (result: any) {
 
         }
     });
 };
-
+const formatPrice = (price: number) => {
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+    }).format(price);
+};
 </script>
 
 <template>
@@ -92,7 +98,7 @@ const Paynow = () => {
                             </div>
                         </div>
 
-  
+
                     </div>
 
                     <div class="border rounded-lg border-gray-200 overflow-hidden">
@@ -112,13 +118,13 @@ const Paynow = () => {
                                         {{ detail.product.nama }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-600 text-right">
-                                        Rp {{ detail.price }}
+                                        {{ formatPrice(detail.price) }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-600 text-center">
                                         {{ detail.quantity }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-900 font-bold text-right">
-                                        Rp {{ detail.price * detail.quantity }}
+                                        {{ formatPrice(detail.price * detail.quantity) }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -131,7 +137,7 @@ const Paynow = () => {
                         <div class="w-full md:w-1/2 lg:w-1/3 space-y-3">
                             <div class="flex justify-between text-gray-600 text-sm">
                                 <span>Subtotal</span>
-                                <span class="font-medium">Rp {{ Order.gross_amount }}</span>
+                                <span class="font-medium">{{ formatPrice(Order.gross_amount )}}</span>
                             </div>
                             <div class="flex justify-between text-gray-600 text-sm">
                                 <span>Pajak (0%)</span>
@@ -142,7 +148,7 @@ const Paynow = () => {
 
                             <div class="flex justify-between items-center">
                                 <span class="text-lg font-bold text-gray-900">Total Bayar</span>
-                                <span class="text-2xl font-bold text-indigo-600">Rp {{ Order.gross_amount }}</span>
+                                <span class="text-2xl font-bold text-indigo-600">{{ formatPrice(Order.gross_amount) }}</span>
                             </div>
 
                             <button @click="Paynow"

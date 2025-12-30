@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Filter\FilterController;
-use App\Http\Controllers\payment\OrderController;
+use App\Http\Controllers\Payment\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductShowController;
@@ -18,11 +18,9 @@ Route::get('/f/kemeja',[FilterController::class,'Kemeja'])->name('filter.kemeja'
 
 
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified', 'role:staff'])->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'role:staff'])->group(function () {
+    Route::get('dashboard', [OrderController::class,'dashboard'])->name('dashboard');
     Route::get('Products', [ProductController::class, 'index'])->name('products');
     Route::get('Products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('Products', [ProductController::class, 'store'])->name('products.store');
@@ -36,4 +34,4 @@ Route::post('/payment/callback',[PaymentController::class ,'HandleCallBack'])->n
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/userSettings.php';
-require __DIR__ . '/order.php';
+require __DIR__ . '/order.php'; 
