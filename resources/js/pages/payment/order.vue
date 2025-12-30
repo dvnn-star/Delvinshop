@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { CirclePlay } from 'lucide-vue-next';
+import { CirclePlay, Check } from 'lucide-vue-next';
 import { route } from 'ziggy-js';
 import { router } from '@inertiajs/vue3';
 interface Order {
     Orders: any
 }
+let id = 1
 const Props = defineProps<Order>();
 console.log(Props.Orders)
 const checkout = (invoice_number: any) => {
@@ -13,6 +14,14 @@ const checkout = (invoice_number: any) => {
 const Buynow = () => {
     router.visit(route('home'))
 }
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(price);
+};
+
 </script>
 
 <template>
@@ -38,19 +47,24 @@ const Buynow = () => {
 
                         <tr v-for="order in Props.Orders" :key="order.id"
                             class="border-b border-gray-100 hover:bg-gray-50 transition">
-                            <td class="p-4 font-medium text-blue-600">#{{ order.id }}</td>
+                            <td class="p-4 font-medium text-blue-600">#{{ id++ }}</td>
                             <td class="p-4 text-gray-600"> {{ new Date(order.created_at).toLocaleDateString('id-ID', {
                                 day: '2-digit',
                                 month: 'long',
                                 year: 'numeric',
                             }) }}</td>
-                            <td class="p-4 font-bold text-gray-800">{{ order.gross_amount }}</td>
-                            <td class="p-4 font-bold text-gray-800 uppercase">{{ order.status }}</td>
+                            <td class="p-4 font-bold text-gray-800">{{ formatPrice(order.gross_amount)}}</td>
+                            <td class="p-4 font-bold text-gray-800 capitalize">{{ order.status }}</td>
                             <td class="p-4 text-center font-bold text-gray-800">
                                 <button class="text-black bg-blue-600 hover:bg-blue-400 p-2 rounded-lg cursor-pointer"
-                                    @click="checkout(order.invoice_number)">
+                                    v-if="order.status != 'paid'" @click="checkout(order.invoice_number)">
                                     Checkout
                                 </button>
+                                <span class="text-black bg-green-600  p-2 rounded-lg "
+                                    v-else @click="checkout(order.invoice_number)">
+                                    Sudah Terbayar
+                                </span>
+
                             </td>
                         </tr>
                     </tbody>
