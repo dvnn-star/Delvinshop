@@ -12,6 +12,7 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: '/dashboard',
     },
 ];
+
 interface Props {
     data: any
 }
